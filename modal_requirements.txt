@@ -1,0 +1,11 @@
+# Modal deployment requirements
+modal>=0.56.0
+numpy<2.0.0
+gradio==4.44.1
+transformers==4.35.0
+torch==2.0.1
+tokenizers>=0.14,<0.15
+accelerate==0.24.0
+fastapi[standard]==0.115.4
+pydantic==2.9.2
+starlette==0.41.2
