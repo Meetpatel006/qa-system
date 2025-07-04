@@ -36,7 +36,7 @@ volume = modal.Volume.from_name("qa-model-storage", create_if_missing=True)
 
 @app.function(
     image=image,
-    gpu=modal.gpu.A10G(),  # Use A10G GPU (you can change to A100 or H100 for faster training)
+    gpu="A10G",  # Use A10G GPU (you can change to A100 or H100 for faster training)
     timeout=3600,  # 1 hour timeout
     volumes={"/models": volume},
 )
@@ -97,7 +97,7 @@ def preprocess_function(examples: Dict[str, Any], tokenizer) -> Dict[str, Any]:
 
 @app.function(
     image=image,
-    gpu=modal.gpu.A10G(),
+    gpu="A10G",
     timeout=7200,  # 2 hours timeout for training
     volumes={"/models": volume},
 )
@@ -264,7 +264,7 @@ def train_qa_model():
 
 @app.function(
     image=image,
-    gpu=modal.gpu.A10G(),
+    gpu="A10G",
     timeout=600,  # 10 minutes timeout for inference
     volumes={"/models": volume},
 )
