@@ -4,6 +4,17 @@ This guide explains how to set up and run the Question Answering System locally 
 
 Repository: [https://github.com/Meetpatel006/qa-system.git](https://github.com/Meetpatel006/qa-system.git)
 
+## Quick Start with Google Colab
+
+The easiest way to get started is to use our pre-configured Google Colab notebook:
+[Open in Google Colab](https://colab.research.google.com/drive/1EjQuv3j1sorDrkch-dGuYYmNJSgthW0N?usp=sharing)
+
+The Colab notebook includes:
+- Pre-installed dependencies
+- GPU acceleration support
+- Example usage with the QA model
+- Both training and inference examples
+
 ## Local Setup
 
 ### Prerequisites
@@ -94,6 +105,40 @@ drive.mount('/content/drive')
 ```
 
 6. Click on the public URL provided by Gradio to access the interface
+
+## Google Colab Setup (Manual)
+
+If you prefer to set up your own Colab notebook:
+
+1. Open our [Google Colab Notebook](https://colab.research.google.com/drive/1EjQuv3j1sorDrkch-dGuYYmNJSgthW0N?usp=sharing) or create a new one
+
+2. Clone the repository:
+```python
+!git clone https://github.com/Meetpatel006/qa-system.git
+%cd qa-system
+```
+
+3. Install dependencies:
+```python
+!pip install -r requirements.txt
+```
+
+4. For training the model:
+```python
+!python models/question_answering.py  # Set mode="train_pytorch" or "train_tensorflow" in the script
+```
+
+5. For inference:
+```python
+!python models/question_answering.py  # Set mode="inference" in the script
+```
+
+6. For web interface:
+```python
+!python main.py
+```
+
+7. Click on the public URL provided by Gradio to access the interface
 
 ## Troubleshooting
 

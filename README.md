@@ -4,6 +4,8 @@ This is a Question Answering (QA) system built using Hugging Face's transformers
 
 Repository: [https://github.com/Meetpatel006/qa-system.git](https://github.com/Meetpatel006/qa-system.git)
 
+Try it on Google Colab: [Open in Colab](https://colab.research.google.com/drive/1EjQuv3j1sorDrkch-dGuYYmNJSgthW0N?usp=sharing)
+
 ## Features
 
 - Question answering using transformer-based models (DistilBERT)
