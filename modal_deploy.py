@@ -90,18 +90,10 @@ def ui():
         return answer, confidence
 
     # Create the Gradio interface
-    with gr.Blocks(
-        title="Question Answering System",
-        theme="soft",
-        css="""
-        .gradio-container {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        """
-    ) as demo:
+    with gr.Blocks(title="Question Answering System") as demo:
         gr.Markdown(
             """
-            # 🤖 Question Answering System
+            # Question Answering System
             
             This system answers questions based on the provided context using a transformer model.
             Enter your question and provide relevant context to get accurate answers.
