@@ -2,6 +2,8 @@
 
 This project contains a Question Answering system built with Gradio and deployed on Modal, a serverless cloud platform optimized for AI/ML workloads.
 
+Repository: [https://github.com/Meetpatel006/qa-system.git](https://github.com/Meetpatel006/qa-system.git)
+
 ## Files Overview
 
 - `main.py` - Original local Gradio implementation
@@ -9,6 +11,20 @@ This project contains a Question Answering system built with Gradio and deployed
 - `setup_modal.py` - Automated setup script for Modal deployment
 - `modal_requirements.txt` - Dependencies for Modal deployment
 - `requirements.txt` - Local development dependencies
+- `models/question_answering.py` - Core QA model implementation with training options
+
+## Model Architecture
+
+The system uses a fine-tuned DistilBERT model with the following specifications:
+- Base model: `distilbert/distilbert-base-uncased`
+- Training data: SQuAD dataset (5000 examples subset)
+- Training parameters:
+  - Batch size: 16
+  - Epochs: 3
+  - Learning rate: 2e-5
+  - Max sequence length: 384
+- Supported frameworks: PyTorch and TensorFlow
+- Automatic model pushing to HuggingFace Hub
 
 ## Quick Start
 
@@ -79,7 +95,16 @@ The system uses the `RedRepter/my_awesome_qa_model` from Hugging Face. If this m
 User Request → Modal Load Balancer → Gradio UI (CPU) → QA Model (GPU) → Response
 ```
 
-The system separates the UI layer (CPU-only) from the inference layer (GPU-accelerated) for optimal resource utilization and cost efficiency.
+The system architecture includes:
+1. Front-end: Gradio UI for user interaction
+2. Model Backend:
+   - DistilBERT-based QA model
+   - Support for both PyTorch and TensorFlow
+   - Multiple inference methods (pipeline, PyTorch, TensorFlow)
+3. Deployment:
+   - GPU-accelerated inference
+   - Auto-scaling capabilities
+   - Resource optimization
 
 ## Cost Optimization
 

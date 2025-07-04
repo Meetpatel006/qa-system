@@ -2,18 +2,32 @@
 
 This guide explains how to set up and run the Question Answering System locally or on Google Colab.
 
+Repository: [https://github.com/Meetpatel006/qa-system.git](https://github.com/Meetpatel006/qa-system.git)
+
 ## Local Setup
 
 ### Prerequisites
 
 - Python 3.8 or higher
 - pip (Python package installer)
+- CUDA-compatible GPU (optional, for faster inference)
+
+### Model Information
+
+The system uses DistilBERT as the base model with the following configuration:
+- Base model: `distilbert/distilbert-base-uncased`
+- Fine-tuned on: SQuAD dataset
+- Training parameters:
+  - Batch size: 16
+  - Epochs: 3
+  - Learning rate: 2e-5
+  - Max sequence length: 384
 
 ### Installation Steps
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Meetpatel006/qa-system.git
 cd qa-system
 ```
 
@@ -31,14 +45,24 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Running Locally
+### Running Models
 
-1. Start the application:
+1. For training:
+```bash
+python models/question_answering.py  # Set mode="train_pytorch" or "train_tensorflow" in the script
+```
+
+2. For inference:
+```bash
+python models/question_answering.py  # Set mode="inference" in the script
+```
+
+3. For web interface:
 ```bash
 python main.py
 ```
 
-2. Open your web browser and navigate to:
+4. Open your web browser and navigate to:
 - Local URL: http://localhost:7860
 - Or use the temporary public URL provided by Gradio
 
