@@ -1,106 +1,152 @@
 # Question Answering System
 
-This is a Question Answering (QA) system built using Hugging Face's transformers library and Gradio for the user interface. The system allows users to input a question and context, and it returns relevant answers along with confidence scores.
+A production-ready Question Answering (QA) system that combines the power of Hugging Face's transformers, Modal's cloud infrastructure, and modern web interfaces. This system provides accurate answers to questions based on given context, with support for both local development and cloud deployment.
 
-Repository: [https://github.com/Meetpatel006/qa-system.git](https://github.com/Meetpatel006/qa-system.git)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1EjQuv3j1sorDrkch-dGuYYmNJSgthW0N?usp=sharing)
 
-Try it on Google Colab: [Open in Colab](https://colab.research.google.com/drive/1EjQuv3j1sorDrkch-dGuYYmNJSgthW0N?usp=sharing)
+## Quick Links
+- [Local Setup Guide](docs/README_LOCAL.md)
+- [Modal Deployment Guide](docs/README_MODAL.md)
+- [Fine-tuning Guide](docs/README_FINETUNING.md)
+- [Repository](https://github.com/Meetpatel006/qa-system.git)
 
-## Features
+## Key Features
 
-- Question answering using transformer-based models (DistilBERT)
-- User-friendly web interface using Gradio
-- Support for context-based question answering
-- Confidence score for each answer
-- Pre-loaded example questions and contexts
-- Support for both local and cloud deployment
-- Multiple training frameworks (PyTorch and TensorFlow)
-- Automatic model pushing to HuggingFace Hub
+🤖 **Advanced Model Architecture**
+- State-of-the-art DistilBERT-based question answering
+- Support for both PyTorch and TensorFlow
+- Fine-tuned on SQuAD dataset
+- Automatic model versioning and HuggingFace Hub integration
 
-## Project Structure
+☁️ **Cloud Infrastructure**
+- GPU-accelerated training with Modal's A10G instances
+- Scalable FastAPI-based REST API
+- Automatic model versioning and storage
+- Comprehensive monitoring and metrics
 
-```
-├── main.py              # Main application with Gradio interface
-├── modal_deploy.py      # Modal deployment configuration
-├── requirements.txt     # Python dependencies for local setup
-├── modal_requirements.txt  # Dependencies for Modal deployment
-├── docs/
-│   ├── README_LOCAL.md  # Local setup instructions
-│   └── README_MODAL.md  # Modal deployment instructions
-└── models/
-    └── question_answering.py  # Core QA model implementation
-```
+💻 **Development Experience**
+- User-friendly Gradio web interface
+- Detailed documentation and examples
+- Multiple deployment options (local, cloud, Colab)
+- Easy-to-use CLI and API interfaces
 
-## Model Information
+## Quick Start
 
-The Question Answering system (`models/question_answering.py`) provides:
-
-### Base Model
-- Uses DistilBERT (`distilbert/distilbert-base-uncased`) as the base model
-- Fine-tuned on SQuAD dataset (subset of 5000 examples)
-
-### Training Options
-1. PyTorch Training:
-   - Uses HuggingFace Trainer API
-   - Supports automatic logging and model pushing to HuggingFace Hub
-   - Configurable training parameters
-
-2. TensorFlow Training:
-   - Custom training loop with TensorFlow
-   - Supports model pushing to HuggingFace Hub
-
-### Model Parameters
-- Training batch size: 16
-- Number of epochs: 3
-- Learning rate: 2e-5
-- Weight decay: 0.01
-- Max sequence length: 384
-- Evaluation split: 20% of the dataset
-
-## Getting Started
-
-For detailed setup instructions, please refer to:
-- [Local/Colab Setup](docs/README_LOCAL.md) - For running the system locally or on Google Colab
-- [Modal Deployment](docs/README_MODAL.md) - For deploying the system using Modal
-
-## Example Usage
-
-```python
-Question: "How many programming languages does BLOOM support?"
-Context: "BLOOM has 176 billion parameters and can generate text in 46 languages natural languages and 13 programming languages."
-Answer: "13"
-```
-
-## Training the Model
-
-1. Clone the repository:
+1. **Clone the Repository**
 ```bash
 git clone https://github.com/Meetpatel006/qa-system.git
 cd qa-system
 ```
 
-2. Install dependencies:
+2. **Choose Your Path**
+- 🚀 For quick experimentation: [Open in Colab](https://colab.research.google.com/drive/1EjQuv3j1sorDrkch-dGuYYmNJSgthW0N?usp=sharing)
+- 💻 For local development: Follow our [Local Setup Guide](docs/README_LOCAL.md)
+- ☁️ For cloud deployment: Check our [Modal Deployment Guide](docs/README_MODAL.md)
+- 🔧 For model fine-tuning: See our [Fine-tuning Guide](docs/README_FINETUNING.md)
+
+## Project Structure
+
 ```bash
-pip install -r requirements.txt
+├── main.py                 # Gradio web interface
+├── deployment/
+│   ├── modal_deploy.py     # Modal deployment script
+│   └── finetune_modal.py   # Fine-tuning system
+├── models/
+│   └── question_answering.py  # Core QA implementation
+├── docs/
+│   ├── README_LOCAL.md     # Local setup guide
+│   ├── README_MODAL.md     # Modal deployment guide
+│   └── README_FINETUNING.md # Fine-tuning guide
+└── requirements/
+    ├── requirements.txt    # Local dependencies
+    └── modal_requirements.txt # Modal dependencies
 ```
 
-3. Choose training framework:
-   - Set `mode = "train_pytorch"` or `mode = "train_tensorflow"` in `models/question_answering.py`
-   - Run the training script:
-   ```bash
-   python models/question_answering.py
-   ```
+## System Architecture
 
-## Inference
+The Question Answering system (`models/question_answering.py`) provides:
 
-To perform inference:
-1. Set `mode = "inference"` in `models/question_answering.py`
-2. Choose inference framework ('pipeline', 'pytorch', or 'tensorflow')
-3. Configure your question and context
-4. Run the script:
-   ```bash
-   python models/question_answering.py
-   ```
+The system combines multiple components for a robust QA solution:
+
+### Core Components
+- **Base Model**: Fine-tuned DistilBERT optimized for QA tasks
+- **Training System**: GPU-accelerated fine-tuning with comprehensive monitoring
+- **API Layer**: FastAPI-based REST interface for training and inference
+- **UI Layer**: Gradio web interface for easy interaction
+
+### Deployment Options
+- **Local**: Run everything on your machine with optional GPU support
+- **Cloud**: Deploy on Modal's infrastructure with A10G GPUs
+- **Hybrid**: Mix local development with cloud training
+- **Colab**: Quick experimentation and prototyping
+
+## Usage Examples
+
+### Simple Question Answering
+```python
+question = "How many programming languages does BLOOM support?"
+context = "BLOOM has 176 billion parameters and can generate text in 46 languages natural languages and 13 programming languages."
+answer = qa_model(question=question, context=context)
+# Answer: "13" (confidence: 0.98)
+```
+
+### Using the REST API
+```bash
+# Training a model
+curl -X POST https://modal-fastapi-url.com/train \
+  -H "Content-Type: application/json" \
+  -d '{"num_epochs": 3, "batch_size": 16}'
+
+# Running inference
+curl -X POST https://modal-fastapi-url.com/inference \
+  -H "Content-Type: application/json" \
+  -d '{"question": "your question", "context": "your context"}'
+```
+
+### Using the Web Interface
+1. Start the Gradio server:
+```bash
+python main.py
+```
+2. Open http://localhost:7860 in your browser
+3. Enter your question and context
+4. Get instant answers with confidence scores
+
+## Development
+
+### Prerequisites
+- Python 3.10 or higher
+- CUDA-compatible GPU (optional for local development)
+- Modal account (for cloud deployment)
+- HuggingFace account (for model pushing)
+
+### Available Tools
+- 🔧 Fine-tuning scripts for custom datasets
+- 📊 Training monitoring with Tensorboard
+- 🚀 Deployment scripts for Modal
+- 🧪 Testing utilities and examples
+
+For detailed development instructions, check:
+- [Fine-tuning Guide](docs/README_FINETUNING.md)
+- [Modal Deployment Guide](docs/README_MODAL.md)
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+- 📚 [Documentation](docs/)
+- 🐛 [Issue Tracker](https://github.com/Meetpatel006/qa-system/issues)
+- 💬 [Discussions](https://github.com/Meetpatel006/qa-system/discussions)
 
 ## License
 
